@@ -153,14 +153,6 @@
   function setStage(n) {
     for (var i = 1; i <= 6; i++) intro.classList.remove('stage-' + i);
     if (n) intro.classList.add('stage-' + n);
-    
-    if (bootHud) {
-      if (n === 1) { bootHud.style.opacity = '1'; bootHud.textContent = 'INITIALIZING CORE...'; }
-      if (n === 2) { bootHud.textContent = 'LOADING ASSETS...'; }
-      if (n === 3) { bootHud.textContent = 'ESTABLISHING CONNECTION...'; }
-      if (n === 4) { bootHud.textContent = 'SYSTEM SECURE.'; }
-      if (n === 5) { bootHud.textContent = 'WELCOME.'; }
-    }
   }
   function endIntro(skipped) {
     if (introEnded) return;
@@ -180,12 +172,12 @@
     document.body.style.overflow = 'hidden';
     setStage(0);
     var tl = [
-      [80, function () { setStage(1); }],
-      [1150, function () { setStage(2); }],
-      [2700, function () { setStage(3); }],
-      [3350, function () { setStage(4); if (state.soundOn) { Sound.setEnabled(true); Sound.tone(200, 0.5, 'sine', 0.1, 800); } }],
-      [4700, function () { setStage(5); if (state.soundOn) Sound.tone(800, 1, 'sine', 0.15, 200); }],
-      [5900, function () { endIntro(false); }]
+      [50, function () { setStage(1); }],
+      [300, function () { setStage(2); if (state.soundOn) Sound.setEnabled(true); }], // ចាប់ផ្តើមរត់
+      [2200, function () { setStage(3); }], // Logo លេចឡើង (ពេលរត់ដល់កណ្តាល)
+      [4000, function () { setStage(4); }], // បន្តបង្ហាញ Logo
+      [5000, function () { setStage(5); }], // Zoom ចូល
+      [5800, function () { endIntro(false); }]
     ];
     tl.forEach(function (s) { introTimers.push(setTimeout(s[1], s[0])); });
     introTimers.push(setTimeout(function () { endIntro(false); }, 9000));

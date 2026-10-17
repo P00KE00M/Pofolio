@@ -33,20 +33,25 @@
   </button>
   <button class="intro__skip" id="skipIntro" type="button">Skip Intro</button>
 
-  <div class="intro__boot">
-    <div class="boot-ring ring-outer"></div>
-    <div class="boot-ring ring-inner"></div>
-    <div class="boot-crosshair"></div>
+  <div class="intro__chase" id="introChase">
+    <div class="chase-grid"></div>
     
-    <div class="intro__center">
-      <div class="intro__brand" id="introBrand">
-        <span style="--i:0">P</span><span style="--i:1" class="zero">0</span><span style="--i:2">K</span><span style="--i:3">E</span><span style="--i:4">M</span><span style="--i:5" class="zero">0</span><span style="--i:6">N</span>
-      </div>
-      <div class="intro__sub">DIGITAL ARCHITECTURE</div>
+    <div class="runner target" style="--delay: 0s; --y: 0px;">
+      <svg viewBox="0 0 100 100">
+        <path d="M50 20 A10 10 0 1 0 50 40 A10 10 0 1 0 50 20 Z M40 45 L60 45 L70 70 L55 70 L50 55 L45 70 L30 70 Z" fill="#FFD700"/>
+        <circle cx="50" cy="30" r="14" fill="none" stroke="#FFD700" stroke-width="2" opacity="0.5"/>
+      </svg>
     </div>
+    
+    <div class="runner hostile" style="--delay: 0.1s; --y: 10px;"><svg viewBox="0 0 100 100"><path d="M50 20 A10 10 0 1 0 50 40 A10 10 0 1 0 50 20 Z M40 45 L60 45 L70 70 L55 70 L50 55 L45 70 L30 70 Z" fill="#ff3333"/></svg></div><div class="runner hostile" style="--delay: 0.15000000000000002s; --y: 15px;"><svg viewBox="0 0 100 100"><path d="M50 20 A10 10 0 1 0 50 40 A10 10 0 1 0 50 20 Z M40 45 L60 45 L70 70 L55 70 L50 55 L45 70 L30 70 Z" fill="#ff3333"/></svg></div><div class="runner hostile" style="--delay: 0.2s; --y: 20px;"><svg viewBox="0 0 100 100"><path d="M50 20 A10 10 0 1 0 50 40 A10 10 0 1 0 50 20 Z M40 45 L60 45 L70 70 L55 70 L50 55 L45 70 L30 70 Z" fill="#ff3333"/></svg></div><div class="runner hostile" style="--delay: 0.25s; --y: 25px;"><svg viewBox="0 0 100 100"><path d="M50 20 A10 10 0 1 0 50 40 A10 10 0 1 0 50 20 Z M40 45 L60 45 L70 70 L55 70 L50 55 L45 70 L30 70 Z" fill="#ff3333"/></svg></div><div class="runner hostile" style="--delay: 0.30000000000000004s; --y: 30px;"><svg viewBox="0 0 100 100"><path d="M50 20 A10 10 0 1 0 50 40 A10 10 0 1 0 50 20 Z M40 45 L60 45 L70 70 L55 70 L50 55 L45 70 L30 70 Z" fill="#ff3333"/></svg></div><div class="runner hostile" style="--delay: 0.35s; --y: 35px;"><svg viewBox="0 0 100 100"><path d="M50 20 A10 10 0 1 0 50 40 A10 10 0 1 0 50 20 Z M40 45 L60 45 L70 70 L55 70 L50 55 L45 70 L30 70 Z" fill="#ff3333"/></svg></div><div class="runner hostile" style="--delay: 0.4s; --y: 40px;"><svg viewBox="0 0 100 100"><path d="M50 20 A10 10 0 1 0 50 40 A10 10 0 1 0 50 20 Z M40 45 L60 45 L70 70 L55 70 L50 55 L45 70 L30 70 Z" fill="#ff3333"/></svg></div><div class="runner hostile" style="--delay: 0.45000000000000007s; --y: 45px;"><svg viewBox="0 0 100 100"><path d="M50 20 A10 10 0 1 0 50 40 A10 10 0 1 0 50 20 Z M40 45 L60 45 L70 70 L55 70 L50 55 L45 70 L30 70 Z" fill="#ff3333"/></svg></div><div class="runner hostile" style="--delay: 0.5s; --y: 50px;"><svg viewBox="0 0 100 100"><path d="M50 20 A10 10 0 1 0 50 40 A10 10 0 1 0 50 20 Z M40 45 L60 45 L70 70 L55 70 L50 55 L45 70 L30 70 Z" fill="#ff3333"/></svg></div><div class="runner hostile" style="--delay: 0.55s; --y: 55px;"><svg viewBox="0 0 100 100"><path d="M50 20 A10 10 0 1 0 50 40 A10 10 0 1 0 50 20 Z M40 45 L60 45 L70 70 L55 70 L50 55 L45 70 L30 70 Z" fill="#ff3333"/></svg></div>
   </div>
-  
-  <div class="intro__hud-text" id="bootHud">INITIALIZING SYSTEM...</div>
+
+  <div class="intro__center" id="introCenter">
+    <div class="intro__brand" id="introBrand">
+      <span style="--i:0">P</span><span style="--i:1" class="zero">0</span><span style="--i:2">K</span><span style="--i:3">E</span><span style="--i:4">M</span><span style="--i:5" class="zero">0</span><span style="--i:6">N</span>
+    </div>
+    <div class="intro__sub">1 VS 10</div>
+  </div>
 </div>
 
 <script>
