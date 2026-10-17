@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en" data-motion="full">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>P0KEM0N — Futuristic Digital Portfolio</title>
+<meta name="description" content="Explore P0KEM0N's futuristic portfolio featuring creative projects, digital experiences, immersive animation, and automotive-inspired design.">
+<meta name="theme-color" content="#030504">
+<meta name="color-scheme" content="dark">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="P0KEM0N">
+<meta property="og:title" content="P0KEM0N — Futuristic Digital Portfolio">
+<meta property="og:description" content="Explore P0KEM0N's futuristic portfolio featuring creative projects, digital experiences, immersive animation, and automotive-inspired design.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="P0KEM0N — Futuristic Digital Portfolio">
+<meta name="twitter:description" content="Creative developer / digital explorer. Building digital experiences beyond the ordinary.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23030504'/%3E%3Ctext x='32' y='46' font-family='monospace' font-size='38' font-weight='700' fill='%2339FF14' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#home">Skip to content</a>
+<canvas id="bg" aria-hidden="true"></canvas>
+
+<!-- INTRO -->
+<div class="intro" id="intro" role="dialog" aria-modal="true" aria-label="Intro sequence">
+  <div class="intro__particles" aria-hidden="true"></div>
+  <button class="intro__sound" id="introSound" type="button" aria-label="Toggle sound" aria-pressed="false">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>
+  </button>
+  <button class="intro__skip" id="skipIntro" type="button">Skip Intro</button>
+  <div class="intro__center">
+    <div class="intro__line" aria-hidden="true"></div>
+    <div class="intro__brand" id="introBrand" aria-label="P0KEM0N">
+      <span style="--i:0">P</span><span style="--i:1" class="zero">0</span><span style="--i:2">K</span><span style="--i:3">E</span><span style="--i:4">M</span><span style="--i:5" class="zero">0</span><span style="--i:6">N</span>
+    </div>
+    <div class="intro__sub">Enter the Future.</div>
+    <div class="intro__powered">Powered by P0KEM0N</div>
+  </div>
+  <div class="intro__road" aria-hidden="true">
+    <div class="intro__glow"></div>
+    <div class="intro__road-line"></div>
+    <div class="intro__headlights"></div>
+    <div class="intro__car">
+      <svg class="vehicle" viewBox="0 0 420 150" aria-hidden="true">
+        <defs><linearGradient id="carBodyIntro" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2b3831"/><stop offset=".5" stop-color="#101814"/><stop offset="1" stop-color="#050807"/></linearGradient></defs>
+        <ellipse cx="210" cy="143" rx="168" ry="7" fill="#39FF14" opacity=".07"/>
+        <g class="wheel"><circle cx="112" cy="112" r="30" fill="#070a08" stroke="#1c271e" stroke-width="2"/><circle cx="112" cy="112" r="17" fill="none" stroke="#39FF14" stroke-opacity=".45" stroke-width="2"/><circle cx="112" cy="112" r="5" fill="#39FF14" fill-opacity=".85"/><path d="M112 82v60M82 112h60" stroke="#243129" stroke-width="3"/></g>
+        <g class="wheel"><circle cx="312" cy="112" r="30" fill="#070a08" stroke="#1c271e" stroke-width="2"/><circle cx="312" cy="112" r="17" fill="none" stroke="#39FF14" stroke-opacity=".45" stroke-width="2"/><circle cx="312" cy="112" r="5" fill="#39FF14" fill-opacity=".85"/><path d="M312 82v60M282 112h60" stroke="#243129" stroke-width="3"/></g>
+        <path d="M14 112 L18 86 C21 72 38 64 70 60 L104 56 C122 43 148 35 178 35 L216 35 C240 37 256 48 270 60 L302 66 C342 72 374 80 389 91 L392 101 C393 107 389 112 383 112 Z" fill="url(#carBodyIntro)" stroke="#1c271e" stroke-width="1.5"/>
+        <path d="M132 57 C148 44 168 39 190 39 L212 39 C232 41 244 49 254 59 L214 63 Z" fill="#0a1611" opacity=".92"/>
+        <path d="M60 94 L330 76" stroke="#39FF14" stroke-opacity=".55" stroke-width="2" stroke-linecap="round"/>
+        <ellipse cx="386" cy="91" rx="9" ry="6" fill="#B6FF00"/><ellipse cx="386" cy="91" rx="22" ry="15" fill="#39FF14" opacity=".16"/>
+        <path class="beam" d="M392 86 L420 74 L420 106 L392 97 Z" fill="#39FF14" opacity=".14"/>
+        <rect x="14" y="86" width="15" height="7" rx="3" fill="#39FF14" opacity=".9"/>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  try{
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var seen = sessionStorage.getItem('p0kemon_intro_seen') === '1';
+    if(!reduce && !seen){
+      document.getElementById('intro').classList.add('intro--on');
+      document.body.style.overflow = 'hidden';
+    }
+  }catch(e){}
+})();
+</script>
+
+<div class="site" id="site">
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="#home" class="logo" aria-label="P0KEM0N home"><span class="dot" aria-hidden="true"></span>P0KEM0N</a>
+      <nav aria-label="Primary"><ul class="nav__links" id="navLinks">
+        <li><a href="#home" class="is-active">Home</a></li><li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li><li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Experience</a></li><li><a href="#contact">Contact</a></li>
+      </ul></nav>
+      <div class="nav__tools">
+        <button class="icon-btn icon-btn--replay" id="replayIntro" type="button" aria-label="Replay intro" title="Replay intro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg></button>
+        <button class="icon-btn" id="soundBtn" type="button" aria-label="Toggle sound" aria-pressed="false" title="Toggle sound"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg></button>
+        <button class="icon-btn burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+    <button class="mobile-nav__close" id="closeNav" type="button" aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+    <ul><li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#skills">Skills</a></li><li><a href="#projects">Projects</a></li><li><a href="#experience">Experience</a></li><li><a href="#contact">Contact</a></li></ul>
+    <div class="mobile-nav__tools">
+      <button class="btn btn--ghost" id="mobileSound" type="button">Sound: Off</button>
+      <button class="btn btn--ghost" id="mobileMotion" type="button">Motion: Full</button>
+      <button class="btn btn--ghost" id="mobileReplay" type="button">Replay Intro</button>
+    </div>
+  </div>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero__grid">
+        <div class="hero__copy">
+          <p class="eyebrow">Neo City / Night Drive</p>
+          <h1 class="hero__title">P<span>0</span>KEM<span>0</span>N</h1>
+          <p class="hero__sub">Creative Developer / Digital Explorer</p>
+          <p class="hero__desc">I build immersive digital experiences where creativity meets technology.</p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#projects">Explore My Work</a>
+            <a class="btn btn--ghost" href="#contact">Contact Me</a>
+          </div>
+          <div class="speedo" aria-hidden="true">
+            <div class="speedo__val"><span id="speedVal">000</span><small>KM/H</small></div>
+            <div class="speedo__bar"><i id="speedBar"></i></div>
+            <div class="speedo__note">Simulated Display</div>
+          </div>
+        </div>
+        <aside class="hud" aria-hidden="true">
+          <div class="hud__row"><span>System</span><b class="ok">Online</b></div>
+          <div class="hud__row"><span>Mode</span><b>Night Drive</b></div>
+          <div class="hud__row"><span>Location</span><b>Neo City</b></div>
+          <div class="hud__row"><span>Status</span><b class="ok">Ready</b></div>
+          <div class="hud__bar"><i></i></div>
+        </aside>
+      </div>
+      <div class="scroll-cue" aria-hidden="true"><span>Scroll to Explore</span><span class="scroll-cue__line"></span></div>
+    </section>
+
+    <div class="road-divider" aria-hidden="true"><i></i></div>
+
+    <section class="section veil-1" id="about">
+      <div class="wrap">
+        <div class="about__grid">
+          <div class="profile-card reveal">
+            <div class="avatar" aria-hidden="true">
+              <svg viewBox="0 0 120 120" fill="none" stroke="#39FF14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="60" cy="42" r="18" opacity=".85"/><path d="M24 104c0-20 16-34 36-34s36 14 36 34" opacity=".85"/>
+                <path d="M60 6v10M60 104v10M6 60h10M104 60h10" opacity=".35"/>
+              </svg>
+            </div>
+            <div class="profile-card__id"><span>ID // P0KEM0N</span><b>ONLINE</b></div>
+          </div>
+          <div class="about__body">
+            <p class="eyebrow reveal">Identity</p>
+            <h2 class="h-section reveal" data-delay="1">Who is <span class="accent">P0KEM0N</span>?</h2>
+            <p class="section-sub reveal" data-delay="1">Creativity. Technology. Motion.</p>
+            <p class="reveal" data-delay="2">I'm <strong>P0KEM0N</strong>, a digital creator passionate about technology, design, and immersive digital experiences. I explore the intersection of creativity and technology to build projects that stand out.</p>
+            <p class="reveal" data-delay="3">My work lives somewhere between interface design and motion — building experiences that feel fast, precise, and cinematic. Every project starts with a question: <strong>how should this feel?</strong></p>
+            <div class="stats">
+              <div class="stat reveal" data-delay="2"><b data-count="0">0</b><span>Projects Completed</span></div>
+              <div class="stat reveal" data-delay="3"><b data-count="0">0</b><span>Years of Experience</span></div>
+              <div class="stat reveal" data-delay="4"><b data-count="0">0</b><span>Technologies Explored</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="road-divider" aria-hidden="true"><i></i></div>
+
+    <section class="section veil-2" id="skills">
+      <div class="wrap">
+        <p class="eyebrow reveal">Dashboard</p>
+        <h2 class="h-section reveal" data-delay="1">System <span class="accent">Capabilities</span></h2>
+        <p class="section-sub reveal" data-delay="1">Tools behind the experience.</p>
+        <div class="filters reveal" data-delay="2" role="tablist" aria-label="Skill categories">
+          <button class="filter is-active" data-filter="all" role="tab" aria-selected="true" type="button">All</button>
+          <button class="filter" data-filter="frontend" role="tab" aria-selected="false" type="button">Frontend</button>
+          <button class="filter" data-filter="design" role="tab" aria-selected="false" type="button">Design</button>
+          <button class="filter" data-filter="animation" role="tab" aria-selected="false" type="button">Animation</button>
+          <button class="filter" data-filter="tools" role="tab" aria-selected="false" type="button">Tools</button>
+        </div>
+        <div class="skills-grid" id="skillsGrid">
+          <article class="skill reveal" data-cat="frontend" style="--lvl:92%"><div class="skill__top"><div class="skill__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M9 9l3 3-3 3"/></svg></div><h3 class="skill__name">HTML5</h3></div><p>Semantic, accessible document structure as the foundation of every build.</p><div class="skill__meter"><i></i></div></article>
+          <article class="skill reveal" data-cat="frontend" data-delay="1" style="--lvl:90%"><div class="skill__top"><div class="skill__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/></svg></div><h3 class="skill__name">CSS3</h3></div><p>Layout systems, custom properties, and motion-driven interface styling.</p><div class="skill__meter"><i></i></div></article>
+          <article class="skill reveal" data-cat="frontend" data-delay="2" style="--lvl:88%"><div class="skill__top"><div class="skill__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4H4v16h4M16 4h4v16h-4"/><path d="M10 9h4M10 15h4"/></svg></div><h3 class="skill__name">JavaScript</h3></div><p>Interaction logic, canvas rendering, and scroll-driven experiences.</p><div class="skill__meter"><i></i></div></article>
+          <article class="skill reveal" data-cat="frontend" data-delay="3" style="--lvl:82%"><div class="skill__top"><div class="skill__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h10M4 17h13"/></svg></div><h3 class="skill__name">TypeScript</h3></div><p>Typed component architecture for scalable, maintainable front-ends.</p><div class="skill__meter"><i></i></div></article>
+          <article class="skill reveal" data-cat="frontend" data-delay="4" style="--lvl:88%"><div class="skill__top"><div class="skill__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><ellipse cx="12" cy="12" rx="10" ry="4.5"/><ellipse cx="12" cy="12" rx="10" ry="4.5" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4.5" transform="rotate(120 12 12)"/></svg></div><h3 class="skill__name">React</h3></div><p>Component-driven interfaces with predictable state and composition.</p><div class="skill__meter"><i></i></div></article>
+          <article class="skill reveal" data-cat="frontend" data-delay="5" style="--lvl:80%"><div class="skill__top"><div class="skill__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19V5l14 14V5"/></svg></div><h3 class="skill__name">Next.js</h3></div><p>Routing, rendering strategy, and performance-first page delivery.</p><div class="skill__meter"><i></i></div></article>
+          <article class="skill reveal" data-cat="frontend" data-delay="5" style="--lvl:84%"><div class="skill__top"><div class="skill__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8c4 0 4 8 8 8s4-8 8-8"/></svg></div><h3 class="skill__name">Tailwind CSS</h3></div><p>Utility-first styling for rapid, consistent design systems.</p><div class="skill__meter"><i></i></div></article>
+          <article class="skill reveal" data-cat="design" style="--lvl:86%"><div class="skill__top"><div class="skill__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div><h3 class="skill__name">UI / UX Design</h3></div><p>Systems thinking, hierarchy, and interfaces built for clarity.</p><div class="skill__meter"><i></i></div></article>
+          <article class="skill reveal" data-cat="design" data-delay="1" style="--lvl:88%"><div class="skill__top"><div class="skill__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7z"/></svg></div><h3 class="skill__name">Motion Design</h3></div><p>Timing, easing, and choreography that make interfaces feel alive.</p><div class="skill__meter"><i></i></div></article>
+          <article class="skill reveal" data-cat="animation" data-delay="2" style="--lvl:78%"><div class="skill__top"><div class="skill__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l9 5-9 5-9-5z"/><path d="M3 12l9 5 9-5"/><path d="M3 17l9 5 9-5"/></svg></div><h3 class="skill__name">Three.js</h3></div><p>Real-time 3D scenes, lighting, and GPU-friendly environments.</p><div class="skill__meter"><i></i></div></article>
+          <article class="skill reveal" data-cat="animation" data-delay="3" style="--lvl:82%"><div class="skill__top"><div class="skill__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18c3-10 13-10 16 0"/><circle cx="12" cy="6" r="2"/></svg></div><h3 class="skill__name">Creative Development</h3></div><p>Merging engineering constraints with art direction.</p><div class="skill__meter"><i></i></div></article>
+          <article class="skill reveal" data-cat="tools" data-delay="4" style="--lvl:76%"><div class="skill__top"><div class="skill__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="14" height="14" rx="2"/><path d="M16 10l6-3v10l-6-3z"/></svg></div><h3 class="skill__name">Video Editing</h3></div><p>Cinematic cuts, colour grading, and motion-matched sequences.</p><div class="skill__meter"><i></i></div></article>
+        </div>
+      </div>
+    </section>
+
+    <div class="road-divider" aria-hidden="true"><i></i></div>
+
+    <section class="section veil-3" id="projects">
+      <div class="wrap">
+        <p class="eyebrow reveal">Garage</p>
+        <h2 class="h-section reveal" data-delay="1">Selected <span class="accent">Projects</span></h2>
+        <p class="section-sub reveal" data-delay="1">Digital experiences built with purpose.</p>
+        <div class="projects-grid" id="projectsGrid">
+          <article class="project project--featured reveal" tabindex="0" role="button" data-title="Neon Transit" data-cat="Web Experience" data-desc="A scroll-driven narrative through a procedural neon city. Built around a custom canvas renderer, layered parallax depth and a hand-tuned motion timeline — designed to feel like driving rather than browsing." data-tags="React,Three.js,GSAP,TypeScript" data-demo="" data-code="">
+            <div class="project__media"><span class="project__num">01 / Featured</span><span class="project__cat">Web Experience</span></div>
+            <div class="project__body"><h3 class="project__title">Neon Transit</h3><p class="project__desc">A scroll-driven narrative through a procedural neon city, built on a custom canvas renderer.</p><div class="tags"><span class="tag">React</span><span class="tag">Three.js</span><span class="tag">GSAP</span><span class="tag">TypeScript</span></div></div>
+          </article>
+          <article class="project reveal" tabindex="0" role="button" data-title="HUD Interface Kit" data-cat="UI System" data-desc="A modular design system for automotive-inspired dashboards — typography scale, telemetry widgets, data visualisation primitives and motion tokens." data-tags="Figma,CSS3,Design System" data-demo="" data-code="">
+            <div class="project__media"><span class="project__num">02</span><span class="project__cat">UI System</span></div>
+            <div class="project__body"><h3 class="project__title">HUD Interface Kit</h3><p class="project__desc">A modular design system for automotive-inspired dashboards.</p><div class="tags"><span class="tag">Figma</span><span class="tag">CSS3</span><span class="tag">Design System</span></div></div>
+          </article>
+          <article class="project reveal" data-delay="1" tabindex="0" role="button" data-title="Velocity Motion Lab" data-cat="Motion Study" data-desc="An exploration of scroll-linked animation: velocity mapping, inertial easing, and how interface physics communicate speed." data-tags="GSAP,ScrollTrigger,Canvas" data-demo="" data-code="">
+            <div class="project__media"><span class="project__num">03</span><span class="project__cat">Motion Study</span></div>
+            <div class="project__body"><h3 class="project__title">Velocity Motion Lab</h3><p class="project__desc">Scroll-linked animation studies on speed, inertia and easing.</p><div class="tags"><span class="tag">GSAP</span><span class="tag">ScrollTrigger</span><span class="tag">Canvas</span></div></div>
+          </article>
+          <article class="project reveal" data-delay="2" tabindex="0" role="button" data-title="Night City Identity" data-cat="Branding" data-desc="A visual identity concept for a fictional night-city racing brand — typography, motion signature and a dark neon palette built for screens." data-tags="Branding,Motion,Art Direction" data-demo="" data-code="">
+            <div class="project__media"><span class="project__num">04</span><span class="project__cat">Branding</span></div>
+            <div class="project__body"><h3 class="project__title">Night City Identity</h3><p class="project__desc">Identity concept for a night-city racing brand.</p><div class="tags"><span class="tag">Branding</span><span class="tag">Motion</span><span class="tag">Art Direction</span></div></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="road-divider" aria-hidden="true"><i></i></div>
+
+    <section class="showcase" id="machine">
+      <div class="wrap">
+        <p class="eyebrow reveal">Showcase</p>
+        <h2 class="h-section reveal" data-delay="1">Machine. Motion. <span class="accent">Future.</span></h2>
+        <p class="section-sub reveal" data-delay="1">Precision engineered visuals — move your pointer across the stage.</p>
+        <div class="showcase__stage reveal" data-delay="2" id="showcaseStage">
+          <div class="showcase__grid-lines" aria-hidden="true"></div>
+          <div class="showcase__scene" id="showcaseScene" aria-hidden="true">
+            <svg class="vehicle showcase__moto" viewBox="0 0 340 180">
+              <ellipse cx="170" cy="166" rx="150" ry="7" fill="#39FF14" opacity=".08"/>
+              <g class="wheel"><circle cx="78" cy="130" r="33" fill="#070a08" stroke="#1c271e" stroke-width="2"/><circle cx="78" cy="130" r="18" fill="none" stroke="#39FF14" stroke-opacity=".45" stroke-width="2"/><circle cx="78" cy="130" r="5" fill="#39FF14" fill-opacity=".85"/><path d="M78 97v66M45 130h66" stroke="#243129" stroke-width="3"/></g>
+              <g class="wheel"><circle cx="262" cy="130" r="33" fill="#070a08" stroke="#1c271e" stroke-width="2"/><circle cx="262" cy="130" r="18" fill="none" stroke="#39FF14" stroke-opacity=".45" stroke-width="2"/><circle cx="262" cy="130" r="5" fill="#39FF14" fill-opacity=".85"/><path d="M262 97v66M229 130h66" stroke="#243129" stroke-width="3"/></g>
+              <path d="M78 130 L146 116 L172 100 L200 112" stroke="#1b2620" stroke-width="7" fill="none" stroke-linecap="round"/>
+              <path d="M262 130 L226 104" stroke="#1b2620" stroke-width="8" fill="none" stroke-linecap="round"/>
+              <path d="M196 84 C214 72 236 76 248 90 L252 106 L214 112 L198 102 Z" fill="#101a15" stroke="#1c271e" stroke-width="1.5"/>
+              <path d="M140 92 C158 78 184 76 200 84 L200 102 L152 108 Z" fill="#16221b" stroke="#1c271e" stroke-width="1.5"/>
+              <path d="M104 100 L142 92 L146 108 L110 112 Z" fill="#0e1712" stroke="#1c271e" stroke-width="1.5"/>
+              <circle cx="188" cy="44" r="11" fill="#0d1611" stroke="#2a3a30" stroke-width="1.5"/>
+              <path d="M152 92 C156 68 172 56 184 56 C196 56 200 70 198 84 L182 96 Z" fill="#0b1310" stroke="#22302a" stroke-width="1.5"/>
+              <path d="M180 62 L226 80" stroke="#0b1310" stroke-width="7" stroke-linecap="round"/>
+              <ellipse cx="250" cy="92" rx="6" ry="5" fill="#B6FF00"/><ellipse cx="250" cy="92" rx="16" ry="12" fill="#39FF14" opacity=".2"/>
+              <path class="beam" d="M256 88 L340 66 L340 108 L256 98 Z" fill="#39FF14" opacity=".13"/>
+              <path d="M110 100 L238 88" stroke="#39FF14" stroke-opacity=".55" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="showcase__meta">
+            <span class="chip"><b>Chassis</b> Carbon Monocoque</span>
+            <span class="chip"><b>Lighting</b> Neon / LED Matrix</span>
+            <span class="chip"><b>Environment</b> Neo City / Night</span>
+            <span class="chip"><b>Render</b> Real-time</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="road-divider" aria-hidden="true"><i></i></div>
+
+    <section class="section veil-2" id="experience">
+      <div class="wrap">
+        <p class="eyebrow reveal">Journey</p>
+        <h2 class="h-section reveal" data-delay="1">The <span class="accent">Road</span> So Far</h2>
+        <p class="section-sub reveal" data-delay="1">Placeholder entries — edit these to match your real journey.</p>
+        <div class="timeline">
+          <article class="tl-item reveal"><div class="tl-item__date">2024 — Present</div><h3>Independent Creative Developer</h3><div class="tl-item__org">Self-directed / Remote</div><p>Designing and building immersive web experiences with a focus on motion, performance and interface craft.</p></article>
+          <article class="tl-item reveal" data-delay="1"><div class="tl-item__date">2023 — 2024</div><h3>Front-End Developer</h3><div class="tl-item__org">Placeholder Organisation</div><p>Built component systems and interactive marketing pages.</p></article>
+          <article class="tl-item reveal" data-delay="2"><div class="tl-item__date">2022 — 2023</div><h3>UI / Motion Designer</h3><div class="tl-item__org">Placeholder Studio</div><p>Explored the boundary between design systems and animation.</p></article>
+          <article class="tl-item reveal" data-delay="3"><div class="tl-item__date">2021 — 2022</div><h3>First Lines of Code</h3><div class="tl-item__org">Learning Phase</div><p>Where it started: HTML, CSS, and a growing obsession with how things move on screen.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <div class="road-divider" aria-hidden="true"><i></i></div>
+
+    <section class="section veil-2" id="contact">
+      <div class="wrap">
+        <div class="contact__grid">
+          <div>
+            <p class="eyebrow reveal">Contact</p>
+            <h2 class="h-section reveal" data-delay="1">Let's build something <span class="accent">epic.</span></h2>
+            <p class="section-sub reveal" data-delay="1">Have an idea worth bringing to life? Let's make it happen.</p>
+            <a class="btn btn--primary reveal" data-delay="2" href="mailto:hello@p0kem0n.dev">Let's Talk</a>
+            <div class="contact__links reveal" data-delay="3">
+              <a class="contact__link" href="mailto:hello@p0kem0n.dev">Email <span>hello@p0kem0n.dev</span></a>
+              <a class="contact__link" href="https://t.me/" target="_blank" rel="noopener noreferrer">Telegram <span>@p0kem0n</span></a>
+              <a class="contact__link" href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub <span>/p0kem0n</span></a>
+            </div>
+          </div>
+          <div>
+            <form class="form reveal" data-delay="2" id="contactForm" novalidate>
+              <div class="field"><label for="cf-name">Name</label><input type="text" id="cf-name" name="name" autocomplete="name" placeholder="Your name" required><span class="field__err" id="err-name" role="alert"></span></div>
+              <div class="field"><label for="cf-email">Email</label><input type="email" id="cf-email" name="email" autocomplete="email" placeholder="you@example.com" required><span class="field__err" id="err-email" role="alert"></span></div>
+              <div class="field"><label for="cf-message">Message</label><textarea id="cf-message" name="message" placeholder="Tell me about your project…" required></textarea><span class="field__err" id="err-message" role="alert"></span></div>
+              <button class="btn btn--primary" type="submit" id="cf-submit">Send Message</button>
+              <p class="form__note">This form is a front-end demo. It is not connected to a backend yet.</p>
+              <div class="form__status" id="cf-status" role="status" aria-live="polite"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="finale" id="finale">
+      <div class="wrap" style="text-align:center">
+        <h2 class="finale__logo reveal">P<span>0</span>KEM<span>0</span>N</h2>
+        <p class="reveal" data-delay="1">The journey never ends.</p>
+        <a class="btn btn--ghost reveal" data-delay="2" href="#home">Back to Top</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <span>© <span id="year">2025</span> P0KEM0N — All Rights Reserved</span>
+      <span>Built for the future · Neo City</span>
+    </div>
+  </footer>
+</div>
+
+<div class="settings" aria-label="Display settings">
+  <button class="icon-btn" id="motionBtn" type="button" aria-pressed="false" title="Toggle motion intensity" aria-label="Toggle motion intensity">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 3 14h7l-1 8 10-12h-7z"/></svg>
+  </button>
+</div>
+
+<div class="modal" id="projectModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal__panel">
+    <button class="modal__close" id="modalClose" type="button" aria-label="Close project details"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+    <span class="modal__cat" id="modalCat"></span>
+    <h3 id="modalTitle"></h3>
+    <p id="modalDesc"></p>
+    <div class="tags" id="modalTags"></div>
+    <div class="modal__actions" id="modalActions"></div>
+  </div>
+</div>
+
+<noscript><div style="position:fixed;bottom:0;left:0;right:0;background:#39FF14;color:#04120a;padding:12px 20px;font-family:monospace;font-size:13px;z-index:10000;text-align:center;">JavaScript is disabled — animations and the intro sequence are disabled. All content remains accessible.</div></noscript>
+
+<script src="js/app.js"></script>
+</body>
+</html>
