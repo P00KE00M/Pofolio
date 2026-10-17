@@ -383,9 +383,9 @@
     ctx.setTransform(env.DPR, 0, 0, env.DPR, 0, 0);
     var W = env.W, H = env.H, horizon = env.horizon;
     var specs = [
-      { count: 30, minH: 0.05, maxH: 0.14, w: 44, col: '#050907', win: 'rgba(57,255,20,0.30)', alpha: 0.9, stars: true },
-      { count: 22, minH: 0.09, maxH: 0.24, w: 62, col: '#070d0a', win: 'rgba(57,255,20,0.42)', alpha: 0.95 },
-      { count: 16, minH: 0.14, maxH: 0.36, w: 86, col: '#0a120e', win: 'rgba(182,255,0,0.45)', alpha: 1 }
+      { count: 30, minH: 0.05, maxH: 0.14, w: 44, col: '#050907', win: 'rgba(255,215,0,0.30)', alpha: 0.9, stars: true },
+      { count: 22, minH: 0.09, maxH: 0.24, w: 62, col: '#070d0a', win: 'rgba(255,215,0,0.42)', alpha: 0.95 },
+      { count: 16, minH: 0.14, maxH: 0.36, w: 86, col: '#0a120e', win: 'rgba(255,234,0,0.45)', alpha: 1 }
     ];
     env.layers = specs.map(function (spec, idx) {
       return makeLayer(function (cx, w, h) {
@@ -398,8 +398,8 @@
           cx.globalAlpha = 1;
         }
         var glow = cx.createRadialGradient(w/2, horizon, 10, w/2, horizon, w*0.7);
-        glow.addColorStop(0, 'rgba(57,255,20,' + (0.075 - idx*0.02) + ')');
-        glow.addColorStop(0.5, 'rgba(57,255,20,0.02)');
+        glow.addColorStop(0, 'rgba(255,215,0,' + (0.075 - idx*0.02) + ')');
+        glow.addColorStop(0.5, 'rgba(255,215,0,0.02)');
         glow.addColorStop(1, 'rgba(0,0,0,0)');
         cx.fillStyle = glow; cx.fillRect(0, 0, w, h);
         var x = -120, count = 0;
@@ -410,7 +410,7 @@
           var top = horizon - bh;
           cx.fillStyle = spec.col; cx.globalAlpha = spec.alpha;
           cx.fillRect(x, top, bw, bh + 4);
-          if (Math.random() < 0.22) { cx.fillStyle = 'rgba(57,255,20,0.28)'; cx.fillRect(x + bw/2 - 0.5, top - 10 - Math.random()*14, 1, 18); }
+          if (Math.random() < 0.22) { cx.fillStyle = 'rgba(255,215,0,0.28)'; cx.fillRect(x + bw/2 - 0.5, top - 10 - Math.random()*14, 1, 18); }
           cx.fillStyle = spec.win;
           for (var wy = top + 8; wy < horizon - 6; wy += 13) {
             for (var wx = x + 6; wx < x + bw - 6; wx += 11) {
@@ -442,8 +442,8 @@
     [-1,1].forEach(function (side) {
       ctx.beginPath();
       ctx.moveTo(W/2 + side*topHalf, horizon); ctx.lineTo(W/2 + side*botHalf, H);
-      ctx.strokeStyle = 'rgba(57,255,20,0.30)'; ctx.lineWidth = 1.2;
-      ctx.shadowColor = 'rgba(57,255,20,0.55)'; ctx.shadowBlur = 14;
+      ctx.strokeStyle = 'rgba(255,215,0,0.30)'; ctx.lineWidth = 1.2;
+      ctx.shadowColor = 'rgba(255,215,0,0.55)'; ctx.shadowBlur = 14;
       ctx.stroke(); ctx.shadowBlur = 0;
     });
     var segs = 16, shift = env.roadShift % 1;
@@ -458,7 +458,7 @@
       ctx.beginPath();
       ctx.moveTo(x0 - w0, y0); ctx.lineTo(x0 + w0, y0);
       ctx.lineTo(x0 + w1, y1); ctx.lineTo(x0 - w1, y1); ctx.closePath();
-      ctx.fillStyle = 'rgba(57,255,20,' + (0.06 + e1 * 0.42) + ')'; ctx.fill();
+      ctx.fillStyle = 'rgba(255,215,0,' + (0.06 + e1 * 0.42) + ')'; ctx.fill();
     }
     var fog = ctx.createLinearGradient(0, horizon - 70, 0, horizon + 130);
     fog.addColorStop(0, 'rgba(3,5,4,0)');
@@ -484,7 +484,7 @@
     for (var i = 0; i < env.particles.length; i++) {
       var p = env.particles[i];
       ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
-      ctx.fillStyle = 'rgba(57,255,20,' + p.a * 0.5 + ')'; ctx.fill();
+      ctx.fillStyle = 'rgba(255,215,0,' + p.a * 0.5 + ')'; ctx.fill();
       if (!isLightMode()) {
         p.y += p.vy * (dt/16.6) * 1.4; p.x += p.vx * (dt/16.6);
         if (p.y < -10) { p.y = H + 10; p.x = Math.random()*W; }
@@ -498,7 +498,7 @@
         var lx = ((time * (0.4 + k*0.13) + k*0.21) % 1) * W;
         var ly = env.horizon + 6 + k*5;
         ctx.beginPath(); ctx.arc(lx, ly, 1.6, 0, Math.PI*2);
-        ctx.fillStyle = k % 2 ? 'rgba(182,255,0,0.55)' : 'rgba(57,255,20,0.55)'; ctx.fill();
+        ctx.fillStyle = k % 2 ? 'rgba(255,234,0,0.55)' : 'rgba(255,215,0,0.55)'; ctx.fill();
       }
     }
     var delta = Math.abs(env.scrollY - env.prevScrollY); env.prevScrollY = env.scrollY;
