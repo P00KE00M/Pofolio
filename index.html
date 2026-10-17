@@ -27,38 +27,26 @@
 <!-- INTRO -->
 <div class="intro" id="intro" role="dialog" aria-modal="true" aria-label="Intro sequence">
   <div class="intro__particles" aria-hidden="true"></div>
+  
   <button class="intro__sound" id="introSound" type="button" aria-label="Toggle sound" aria-pressed="false">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>
   </button>
   <button class="intro__skip" id="skipIntro" type="button">Skip Intro</button>
-  <div class="intro__center">
-    <div class="intro__line" aria-hidden="true"></div>
-    <div class="intro__brand" id="introBrand" aria-label="P0KEM0N">
-      <span style="--i:0">P</span><span style="--i:1" class="zero">0</span><span style="--i:2">K</span><span style="--i:3">E</span><span style="--i:4">M</span><span style="--i:5" class="zero">0</span><span style="--i:6">N</span>
-    </div>
-    <div class="intro__sub">Enter the Future.</div>
-    <div class="intro__powered">Powered by P0KEM0N</div>
-  </div>
-  <div class="intro__road" aria-hidden="true">
-    <div class="intro__glow"></div>
-    <div class="intro__speed-lines"></div>
-    <div class="intro__road-line"></div>
-    <div class="intro__headlights"></div>
-    <div class="intro__car">
-      <svg class="vehicle" viewBox="0 0 420 150" aria-hidden="true">
-        <defs><linearGradient id="carBodyIntro" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2b3831"/><stop offset=".5" stop-color="#101814"/><stop offset="1" stop-color="#050807"/></linearGradient></defs>
-        <ellipse cx="210" cy="143" rx="168" ry="7" fill="#39FF14" opacity=".07"/>
-        <g class="wheel"><circle cx="112" cy="112" r="30" fill="#070a08" stroke="#1c271e" stroke-width="2"/><circle cx="112" cy="112" r="17" fill="none" stroke="#39FF14" stroke-opacity=".45" stroke-width="2"/><circle cx="112" cy="112" r="5" fill="#39FF14" fill-opacity=".85"/><path d="M112 82v60M82 112h60" stroke="#243129" stroke-width="3"/></g>
-        <g class="wheel"><circle cx="312" cy="112" r="30" fill="#070a08" stroke="#1c271e" stroke-width="2"/><circle cx="312" cy="112" r="17" fill="none" stroke="#39FF14" stroke-opacity=".45" stroke-width="2"/><circle cx="312" cy="112" r="5" fill="#39FF14" fill-opacity=".85"/><path d="M312 82v60M282 112h60" stroke="#243129" stroke-width="3"/></g>
-        <path d="M14 112 L18 86 C21 72 38 64 70 60 L104 56 C122 43 148 35 178 35 L216 35 C240 37 256 48 270 60 L302 66 C342 72 374 80 389 91 L392 101 C393 107 389 112 383 112 Z" fill="url(#carBodyIntro)" stroke="#1c271e" stroke-width="1.5"/>
-        <path d="M132 57 C148 44 168 39 190 39 L212 39 C232 41 244 49 254 59 L214 63 Z" fill="#0a1611" opacity=".92"/>
-        <path d="M60 94 L330 76" stroke="#39FF14" stroke-opacity=".55" stroke-width="2" stroke-linecap="round"/>
-        <ellipse cx="386" cy="91" rx="9" ry="6" fill="#B6FF00"/><ellipse cx="386" cy="91" rx="22" ry="15" fill="#39FF14" opacity=".16"/>
-        <path class="beam" d="M392 86 L420 74 L420 106 L392 97 Z" fill="#39FF14" opacity=".14"/>
-        <rect x="14" y="86" width="15" height="7" rx="3" fill="#39FF14" opacity=".9"/>
-      </svg>
+
+  <div class="intro__boot">
+    <div class="boot-ring ring-outer"></div>
+    <div class="boot-ring ring-inner"></div>
+    <div class="boot-crosshair"></div>
+    
+    <div class="intro__center">
+      <div class="intro__brand" id="introBrand">
+        <span style="--i:0">P</span><span style="--i:1" class="zero">0</span><span style="--i:2">K</span><span style="--i:3">E</span><span style="--i:4">M</span><span style="--i:5" class="zero">0</span><span style="--i:6">N</span>
+      </div>
+      <div class="intro__sub">DIGITAL ARCHITECTURE</div>
     </div>
   </div>
+  
+  <div class="intro__hud-text" id="bootHud">INITIALIZING SYSTEM...</div>
 </div>
 
 <script>

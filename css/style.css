@@ -379,3 +379,115 @@ html[data-motion="reduced"] .intro__particles{animation:none !important;opacity:
   opacity: 1 !important;
   background: radial-gradient(ellipse at 78% 60%, rgba(255, 234, 0, 0.8), transparent 70%) !important;
 }
+
+/* ============================================================
+   HOLOGRAPHIC CYBER BOOT-UP (ជំនួសឡាន)
+   ============================================================ */
+.intro__boot {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+}
+
+/* រង្វង់ Hologram */
+.boot-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.5s ease, transform 1s ease;
+}
+.ring-outer {
+  width: min(70vw, 600px);
+  height: min(70vw, 600px);
+  border-width: 2px;
+  border-style: dashed;
+}
+.ring-inner {
+  width: min(50vw, 400px);
+  height: min(50vw, 400px);
+  border-color: rgba(255, 234, 0, 0.4);
+}
+
+/* ខ្សែកាត់ចំកណ្តាល (Crosshair) */
+.boot-crosshair {
+  position: absolute;
+  width: min(60vw, 500px);
+  height: min(60vw, 500px);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.boot-crosshair::before, .boot-crosshair::after {
+  content: "";
+  position: absolute;
+  background: rgba(255, 215, 0, 0.3);
+}
+.boot-crosshair::before { top: 50%; left: 0; width: 100%; height: 1px; }
+.boot-crosshair::after { left: 50%; top: 0; width: 1px; height: 100%; }
+
+/* ចលនាពេលបើក (Stage 3 & 4) */
+.intro.stage-3 .boot-ring, .intro.stage-4 .boot-ring {
+  opacity: 1;
+  transform: scale(1);
+}
+.intro.stage-3 .ring-outer { animation: spin 15s linear infinite; }
+.intro.stage-3 .ring-inner { animation: spinReverse 10s linear infinite; }
+.intro.stage-3 .boot-crosshair { opacity: 1; }
+
+@keyframes spin { 100% { transform: scale(1) rotate(360deg); } }
+@keyframes spinReverse { 100% { transform: scale(1) rotate(-360deg); } }
+
+/* អក្សរ P0KEM0N ពេលលេចឡើង */
+.intro__brand {
+  z-index: 5;
+  position: relative;
+}
+.intro.stage-3 .intro__brand span {
+  text-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
+}
+
+/* អក្សរ HUD ខាងក្រោម (Typing Effect) */
+.intro__hud-text {
+  position: absolute;
+  bottom: 15vh;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-display);
+  font-size: clamp(10px, 1.5vw, 14px);
+  letter-spacing: 0.3em;
+  color: var(--neon);
+  text-transform: uppercase;
+  opacity: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid var(--neon);
+  padding-right: 5px;
+  animation: blinkCursor 0.8s step-end infinite;
+}
+@keyframes blinkCursor { 50% { border-color: transparent; } }
+
+/* ពេលបញ្ចប់ (Stage 5) */
+.intro.stage-5 .intro__boot {
+  transform: scale(3);
+  opacity: 0;
+  transition: transform 0.8s cubic-bezier(0.85, 0, 0.15, 1), opacity 0.5s ease;
+}
+.intro.stage-5 .intro__hud-text {
+  opacity: 0;
+  transform: translate(-50%, 20px);
+  transition: all 0.4s ease;
+}
+
+/* ពន្លឺភ្លើងបៃតង/លឿង ស្រោចស្រព */
+.intro.stage-3::before, .intro.stage-4::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(255, 215, 0, 0.1) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 2;
+}

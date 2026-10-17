@@ -149,10 +149,18 @@
   /* ---------- INTRO ---------- */
   var intro = $('#intro'), introTimers = [], introEnded = false;
   function clearIntroTimers() { introTimers.forEach(clearTimeout); introTimers = []; }
+  var bootHud = document.getElementById('bootHud');
   function setStage(n) {
-    if (!intro) return;
     for (var i = 1; i <= 6; i++) intro.classList.remove('stage-' + i);
     if (n) intro.classList.add('stage-' + n);
+    
+    if (bootHud) {
+      if (n === 1) { bootHud.style.opacity = '1'; bootHud.textContent = 'INITIALIZING CORE...'; }
+      if (n === 2) { bootHud.textContent = 'LOADING ASSETS...'; }
+      if (n === 3) { bootHud.textContent = 'ESTABLISHING CONNECTION...'; }
+      if (n === 4) { bootHud.textContent = 'SYSTEM SECURE.'; }
+      if (n === 5) { bootHud.textContent = 'WELCOME.'; }
+    }
   }
   function endIntro(skipped) {
     if (introEnded) return;
@@ -175,8 +183,8 @@
       [80, function () { setStage(1); }],
       [1150, function () { setStage(2); }],
       [2700, function () { setStage(3); }],
-      [3350, function () { setStage(4); if (state.soundOn) { Sound.setEnabled(true); Sound.engineStart(); } }],
-      [4700, function () { setStage(5); if (state.soundOn) Sound.accelerate(); }],
+      [3350, function () { setStage(4); if (state.soundOn) { Sound.setEnabled(true); Sound.tone(200, 0.5, 'sine', 0.1, 800); } }],
+      [4700, function () { setStage(5); if (state.soundOn) Sound.tone(800, 1, 'sine', 0.15, 200); }],
       [5900, function () { endIntro(false); }]
     ];
     tl.forEach(function (s) { introTimers.push(setTimeout(s[1], s[0])); });
