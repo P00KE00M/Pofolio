@@ -284,3 +284,98 @@ html[data-motion="reduced"] .intro__particles{animation:none !important;opacity:
 .intro__headlights {
   background: radial-gradient(ellipse at 78% 60%, rgba(255, 234, 0, 0.7), transparent 65%) !important;
 }
+
+/* ============================================================
+   ULTRA-SMOOTH CINEMATIC CAR ANIMATION (YELLOW)
+   ============================================================ */
+
+/* ឡានចេញពីខ្មៅ (Stage 3) */
+.intro__car {
+  transform: translate(-180%, 0) scale(0.9) !important;
+  opacity: 0;
+  transition: transform 1.8s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 1s ease !important;
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.9)) !important;
+  z-index: 5;
+}
+.intro.stage-3 .intro__car {
+  transform: translate(-120%, 0) scale(0.95) !important;
+  opacity: 1;
+}
+
+/* ឡានចាប់ហ្គែរខ្លាំង (Stage 4) */
+.intro.stage-4 .intro__car {
+  transform: translate(-50%, 0) scale(1) rotate(-2deg) !important;
+  opacity: 1;
+  /* ប្រើ Easing បែបហោះទៅមុខលឿន */
+  transition: transform 1s cubic-bezier(0.85, 0, 0.15, 1) !important;
+}
+
+/* ឡានហោះចេញពីអេក្រង់ (Stage 5) */
+.intro.stage-5 .intro__car {
+  transform: translate(180%, 0) scale(1.15) rotate(-4deg) !important;
+  opacity: 0;
+  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.6s ease 0.2s !important;
+  filter: blur(3px) drop-shadow(0 0 50px rgba(255, 215, 0, 0.6)) !important;
+}
+
+/* កង់វិលលឿន */
+.intro.stage-4 .intro__car .wheel { animation: spin 0.2s linear infinite !important; }
+.intro.stage-5 .intro__car .wheel { animation: spin 0.05s linear infinite !important; }
+
+/* ខ្សែពន្លឺលឿនៗ (Speed Lines) */
+.intro__speed-lines {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(90deg, transparent 0%, rgba(255, 215, 0, 0.6) 50%, transparent 100%),
+    linear-gradient(90deg, transparent 0%, rgba(255, 234, 0, 0.4) 50%, transparent 100%);
+  background-size: 250px 2px, 400px 1px;
+  background-repeat: repeat-x;
+  background-position: 0 45%, 0 65%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 4;
+}
+.intro.stage-4 .intro__speed-lines {
+  opacity: 1;
+  animation: roadSpeed 0.3s linear infinite;
+}
+.intro.stage-5 .intro__speed-lines {
+  opacity: 1;
+  animation: roadSpeed 0.1s linear infinite;
+}
+@keyframes roadSpeed {
+  from { background-position: 0 45%, 0 65%; }
+  to { background-position: -250px 45%, -400px 65%; }
+}
+
+/* អេក្រង់រញ្ជួយបន្តិចពេលឡានចាប់ហ្គែរ (Camera Shake) */
+.intro.stage-4 .intro__center {
+  animation: launchShake 0.5s ease-out !important;
+}
+@keyframes launchShake {
+  0% { transform: translate(0, 0); }
+  20% { transform: translate(-6px, 4px); }
+  40% { transform: translate(6px, -4px); }
+  60% { transform: translate(-4px, 2px); }
+  80% { transform: translate(4px, -2px); }
+  100% { transform: translate(0, 0); }
+}
+
+/* ឡានផ្អៀងក្រោយបន្តិចពេលបើក (Squat effect) */
+.intro.stage-4 .intro__car svg {
+  animation: carSquat 0.4s ease-out !important;
+}
+@keyframes carSquat {
+  0% { transform: translateY(0); }
+  30% { transform: translateY(5px); }
+  100% { transform: translateY(0); }
+}
+
+/* ពន្លឺក្រោមឡាន និងភ្លើងមុខ ឱ្យកាន់តែភ្លឺ */
+.intro.stage-3 .intro__headlights,
+.intro.stage-4 .intro__headlights {
+  opacity: 1 !important;
+  background: radial-gradient(ellipse at 78% 60%, rgba(255, 234, 0, 0.8), transparent 70%) !important;
+}
